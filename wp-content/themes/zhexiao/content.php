@@ -13,15 +13,15 @@
 				<a class="title" href="<?php the_permalink(); ?>">
 					<?php the_title(); ?>
 				</a>
-				<div class="meta-1">
-					<span class="meta-1-left">
+				<div class="meta-1 clearfix">
+					<span class="col-md-5 col-xs-12 meta-1-left">
 						<?=get_the_time().', '.get_the_date()?> 
 						By
 						<a href="<?=esc_url(get_author_posts_url(get_the_author_meta('ID')))?>" >
 							<?=get_the_author();?>
 						</a>
 					</span>
-					<span class="category">
+					<span class="col-md-7 col-xs-12 category">
 						<?=get_the_category_list(' ');?>
 					</span>
 				</div>
@@ -39,13 +39,13 @@
 		<?php endif; ?>
 	</section>
 
-	<footer>
-		<span class="tag-wrap">
+	<footer class="clearfix">
+		<div class="col-md-9 col-xs-12 tag-wrap">
 			<b class="tagLabel"><i class="fa fa-tags"></i>TAGS:</b>
 			<?=get_the_tag_list( '', '');?>		
-		</span>
-		<span class="entry-share">
+		</div>
+		<div class="col-md-3 col-xs-12 entry-share">
 			<?=generate_shares( get_the_ID() );?>
-		</span>
+		</div>
 	</footer>
 </article>

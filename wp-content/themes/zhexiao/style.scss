@@ -56,6 +56,9 @@ body {
 }
 
 .soliloquy-container{
+	padding-left: 15px!important;
+	padding-right: 15px!important;
+
 	.soliloquy-image-slide{
 		overflow: hidden;
 		.soliloquy-image{
@@ -68,7 +71,10 @@ body {
 	}
 }
 
-header{
+.top-header{
+	padding-left: 15px;
+	padding-right: 15px;
+
 	.container-fluid{
 		 padding-right: 0px; 
 		 padding-left: 0px; 
@@ -125,10 +131,6 @@ header{
 		padding: 0px 0 30px;
 	}
 
-	.index-main{
-		 padding-left: 0px; 
-	}
-
 	.view-all{
 		cursor: pointer;
 		display: inline-block;
@@ -174,11 +176,12 @@ article{
 			}
 
 			.category{
-				float: right;
+				padding: 10px 0;
+				text-align: right;
 
 				a{
 					display: inline-block;
-					padding: 4px 8px;
+					padding: 2px 8px;
 					font-size: 11px;
 					background: #b93434;
 					color: #fff;
@@ -191,26 +194,23 @@ article{
 			}
 		}
 
-		.meta-1{
-			padding: 10px 0;
-		}
-
-
 		.meta-1-left{
+			padding: 10px 0;
 			font-size: 13px;
 		}
 	}
 
 	section{
 		padding: 15px 20px;
+		overflow: hidden;
 	}
 
 	footer{
-		padding: 15px 20px;
+		padding: 5px 10px;
 		border-top: 1px solid #e6e6e6;
 
 		.entry-share{
-			float: right;
+			padding: 10px;
 
 			a{
 				display: inline-block;
@@ -239,6 +239,7 @@ article{
 
 		.tag-wrap{
 			font-size: 14px;
+			padding: 10px;
 		
 			a{
 				display: inline-block;
@@ -263,7 +264,6 @@ article:hover{
 }
 
 .col-right-sidebar{
-	padding-right: 0;
 	a{
 		color: #333;
 	}
@@ -395,7 +395,6 @@ article:hover{
 }
 
 .single-post{
-	padding-left: 0;
 
 	.nav-single{
 		background-color: #fff;
@@ -444,6 +443,7 @@ article:hover{
 
 .post-comments-area{
 	margin-top: 30px;
+	margin-bottom: 20px;
 	font-size: 16px;
 	@include css3(transition, all 0.6s ease-in-out);
 	background-color: #fff;
@@ -659,7 +659,6 @@ article:hover{
 
 
 .archive-div, .search-result{
-	padding-left: 0;
 
 	header{
 		margin-top: 0;
@@ -683,13 +682,18 @@ article:hover{
 	margin-top: 20px;
 
 	.nav{
+		margin: 10px 0;
+		padding-left: 15px;
+
 		a{
 			display: inline-block;
 			font-size: 18px;
 			background: #b93434;
-			padding: 10px 80px;
+			padding: 10px 0;
+			width: 100%;
 			text-transform: uppercase;
 			color: #fff;
+			text-align: center;
 		}
 
 		a:hover{
@@ -700,16 +704,12 @@ article:hover{
 	}
 
 	.nav-next{
-		float: right;
-
 		.fa{
 			margin-left: 10px;
 		}
 	}
 
 	.nav-previous{
-		float: left;
-
 		.fa{
 			margin-right: 10px;
 		}

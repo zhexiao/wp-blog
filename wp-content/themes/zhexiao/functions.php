@@ -302,10 +302,10 @@ function post_content_nav( $html_id ) {
 
 	if ( $wp_query->max_num_pages > 1 ){ ?>
 		<nav id="<?=$html_id;?>" class="navigation clearfix" role="navigation">
-			<div class="nav nav-previous">
+			<div class="col-md-6 col-xs-12 nav nav-previous">
 				<?php previous_posts_link('<span class="meta-nav"><i class="fa fa-arrow-left"></i>Newer</span>'); ?>
 			</div>
-			<div class="nav nav-next">
+			<div class="col-md-6 col-xs-12 nav nav-next">
 				<?php next_posts_link('<span class="meta-nav">Older<i class="fa fa-arrow-right"></i></span>'); ?>
 			</div>
 		</nav>

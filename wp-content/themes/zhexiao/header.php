@@ -14,7 +14,7 @@
 		<div>
 			<?php echo do_shortcode( '[soliloquy slug="top-slider"]' ) ?>
 		</div>
-		<header>
+		<header class="top-header">
 			<nav class="navbar navbar-default header-navbar" role="navigation">
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->			
