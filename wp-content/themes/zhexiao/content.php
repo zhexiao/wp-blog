@@ -10,9 +10,16 @@
 	<header>
 		<div class="post-title clearfix">
 			<div class="title-wrap">
-				<a class="title" href="<?php the_permalink(); ?>">
-					<?php the_title(); ?>
-				</a>
+				<?php if ( is_single() ) : ?>
+					<span class="title">
+						<?php the_title(); ?>
+					</span>
+				<?php else : ?>
+					<a class="title" href="<?php the_permalink(); ?>">
+						<?php the_title(); ?>
+					</a>
+				<?php endif; ?>
+				
 				<div class="meta-1 clearfix">
 					<span class="col-md-5 col-xs-12 meta-1-left">
 						<?=get_the_time().', '.get_the_date()?> 
