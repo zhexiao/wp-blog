@@ -201,7 +201,7 @@ article {
         color: #fff; }
 
 article:hover a {
-  color: #337ab7; }
+  color: #b93434; }
 
 .col-right-sidebar a {
   color: #333; }
@@ -235,6 +235,8 @@ article:hover a {
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
 .col-right-sidebar .right-sidebar ul {
   list-style-type: none; }
+.col-right-sidebar .right-sidebar a:hover {
+  color: #b93434; }
 .col-right-sidebar .right-sidebar .widget-area .widget {
   margin-top: 20px;
   background-color: #fff;
@@ -319,7 +321,7 @@ article:hover a {
   .single-post .nav-single a {
     color: #333; }
   .single-post .nav-single a:hover {
-    color: #337ab7; }
+    color: #b93434; }
   .single-post .nav-single .fa-angle-left {
     margin-right: 15px; }
   .single-post .nav-single .fa-angle-right {
@@ -447,7 +449,7 @@ article:hover a {
   .post-comments-area #reply-title {
     padding: 10px 0; }
     .post-comments-area #reply-title a {
-      color: #2C710E; }
+      color: #0074d9; }
     .post-comments-area #reply-title small a {
       display: inline-block;
       margin-left: 20px;
@@ -515,7 +517,7 @@ article:hover a {
   border-radius: 2px;
   border: 1px solid #e3e3e3; }
   .archive-div .archive-title span, .search-result .archive-title span {
-    color: #2C710E; }
+    color: #0074d9; }
 
 #nav-below {
   margin-top: 20px; }
@@ -651,4 +653,21 @@ blockquote {
   color: #b0b0b0;
   font-size: 12px; }
 
-/*# sourceMappingURL=style.css.map */
+.related-posts {
+  margin-top: 30px;
+  background-color: #fff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #e3e3e3;
+  padding: 20px; }
+  .related-posts a {
+    color: #333; }
+  .related-posts .media time {
+    color: #666;
+    font-size: 13px; }
+
+.related-posts:hover a {
+  color: #b93434; }

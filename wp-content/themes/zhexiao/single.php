@@ -20,6 +20,13 @@ get_header(); ?>
 				</div>
 			</nav>
 
+			<div class="related-posts">
+				<h3>Related Posts</h3>
+				<?=get_related_posts(array(
+					'posts_per_page' => 5
+				))?>	
+			</div>
+
 			<?php comments_template(); ?>
 		<?php endwhile; ?>
 	</div>

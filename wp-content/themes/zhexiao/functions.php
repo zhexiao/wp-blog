@@ -91,43 +91,6 @@ function sidebar_widgets_init() {
 add_action( 'widgets_init', 'sidebar_widgets_init' );
 
 
-
-/**
- * show wordpress featured posts
- * @param  [type] $args [description]
- * @return [type]       [description]
- */
-function show_featured_posts($args){
-	$feaQuery = new WP_Query( array(
-		'cat' => $args['cat'],
-		'posts_per_page' => $args['posts_per_page'],
-		'offset' => $args['offset']
-	));
-	$str = '';
-
-	while ( $feaQuery->have_posts() ) {
-		$feaQuery->the_post();
-		$ftImage = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' ); 
-
-		$str .= '<div class="col-md-3 f-a-col">		
-					<div class="img-hover">		
-						<a href="'.get_permalink().'">
-							<img class="img-responsive img-hover-c" src="'.$ftImage[0].'" />
-						</a>
-					</div>
-					<div class="m-t-2-title">
-						<a href="'.get_permalink().'">'.get_the_title().'</a>
-					</div>
-				</div>';
-	}	
-
-	wp_reset_postdata();
-
-	echo $str;
-}
-add_action( 'featured_posts', 'show_featured_posts');
-
-
 /**
  * generate share html
  * @return [type] [description]
@@ -144,73 +107,6 @@ function generate_shares($postId){
 
 	echo $str;
 }
-
-
-/**
- * use do_action display categorized content
- * @param  [type] $catId [description]
- * @return [type]        [description]
- */
-function show_posts_by_category($args){
-	$catQuery = new WP_Query( array(
-		'cat' => $args['cat'],
-		'posts_per_page' => $args['posts_per_page']
-	));
-	$str = '';
-
-	// calculate how many columns should display
-	$colWidthClass = 'col-md-6';
-	if($args['cat']==3){
-		$colWidthClass = 'col-md-4';
-	}
-
-	while ( $catQuery->have_posts() ) {
-		$catQuery->the_post();
-
-		// get content
-		$content = strip_tags(get_the_content());
-		if(strlen($content) > 120){
-			$content = substr($content, 0, 120).'...';
-		}
-		
-
-		// get title
-		$title = get_the_title();
-		if(strlen($title) > 70){
-			$title = substr($title, 0, 70).'...';
-		}
-
-		// get image
-		$imgStr = '';
-		$image = catch_that_image();
-		if(!empty($image)){
-			$imgStr = 	'<a class="media-top" href="'.get_permalink().'">
-					    	<img src="'.$image.'" alt="'.$title.'">
-					  	</a>';
-		}
-
-		$str .= '<div class="'.$colWidthClass.' f-a-col">
-					<div class="media">
-					  	'.$imgStr.'
-					  	<div class="media-body">
-					    	<div class="c-p-title">
-					    		<a href="'.get_permalink().'">'.$title.'</a>
-					    	</div>
-					    	<div class="c-p-content">
-					    		'.$content.'
-					    	</div>
-					    	<time>'.date('h:i A, D F j, Y', get_post_time()).'</time>
-					    	<div class="clearfix"></div>
-					  	</div>
-					</div>
-				</div>';
-	}	
-
-	wp_reset_postdata();
-
-	echo $str;
-}
-add_action( 'categorized_posts', 'show_posts_by_category');
 
 
 /**
@@ -248,9 +144,8 @@ function show_recent_posts($args = array()){
 				</div>';
 	}
 
-	echo $str;
+	return $str;
 }
-add_action( 'recent_posts', 'show_recent_posts');
 
 /**
  * display the recent comments
@@ -259,9 +154,6 @@ function show_recent_comments($args = array()){
 	$str = '';
 	$recent_comments = get_comments( $args );
 	foreach( $recent_comments as $recent ){
-		// echo '<pre>';
-		// print_r($recent);
-		// check the title
 		$title = $recent->comment_content;
 		if(strlen($title) > 50){
 			$title = substr($title, 0, 50).'...';
@@ -285,9 +177,8 @@ function show_recent_comments($args = array()){
 				</div>';
 	}
 
-	echo $str;
+	return $str;
 }
-add_action( 'recent_comments', 'show_recent_comments');
 
 
 
@@ -400,3 +291,109 @@ add_action( 'after_setup_theme', 'top_navigation' );
 function top_navigation() {
 	register_nav_menu( 'top_navigation', 'Top Navigation' );
 }
+
+
+/**
+ * display the most popular posts
+ * @return [type] [description]
+ */
+function get_popular_posts($args){
+	$str = '';
+	$topQuery = new WP_Query( array(
+	  	'orderby' => 'comment_count',
+	    'posts_per_page' => $args['posts_per_page']
+	));
+
+	while ( $topQuery->have_posts() ) {
+		$topQuery->the_post();
+
+		// check the title
+		$title = get_the_title();
+		if(strlen($title) > 50){
+			$title = substr($title, 0, 50).'...';
+		}
+
+		// get the featured image
+		$image = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+		if(!$image){
+			$image = catch_that_image( get_the_content() );
+		}
+
+		$imgStr = '';	
+		if(!empty($image)){
+			$imgStr = 	'<a class="media-left" href="'.get_permalink(get_the_ID()).'">
+					    	<img src="'.$image.'" alt="'.$title.'" style="width: 64px; height: 64px;">
+					  	</a>';
+		}
+
+		$str .= '<div class="media">
+				  	'.$imgStr.'
+				  	<div class="media-body">
+				    	<div class="r-p-title"><a href="'.get_permalink(get_the_ID()).'">'.$title.'</a></div>
+				    	<time>'.date('h:i A, D F j, Y', get_post_time()).'</time>
+				  	</div>
+				</div>';
+	}	
+
+	wp_reset_postdata();
+
+	return $str;
+}
+
+
+/**
+ * display related posts
+ * @return [type] [description]
+ */
+function get_related_posts($args){
+	$tags = wp_get_post_tags( get_the_ID() );
+	$str = '';
+
+	if ($tags) {
+		$tag_ids = array();
+		foreach($tags as $individual_tag) {
+			$tag_ids[] = $individual_tag->term_id;
+		}
+
+		$relatedQuery = new wp_query(array(
+			'tag__in' => $tag_ids,
+			'post__not_in' => array( get_the_ID() ),
+			'posts_per_page' => $args['posts_per_page'],  
+			'ignore_sticky_posts' => true
+		));
+		if( $relatedQuery->have_posts() ) {
+			while ($relatedQuery->have_posts()) {
+				$relatedQuery->the_post();
+
+				// check the title
+				$title = get_the_title();
+
+				// get the featured image
+				$image = wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) );
+				if(!$image){
+					$image = catch_that_image( get_the_content() );
+				}
+
+				$imgStr = '';	
+				if(!empty($image)){
+					$imgStr = 	'<a class="media-left" href="'.get_permalink(get_the_ID()).'">
+							    	<img src="'.$image.'" alt="'.$title.'" style="width: 64px; height: 64px;">
+							  	</a>';
+				}
+
+				$str .= '<div class="media">
+						  	'.$imgStr.'
+						  	<div class="media-body">
+						    	<div class="r-p-title"><a href="'.get_permalink(get_the_ID()).'">'.$title.'</a></div>
+						    	<time>'.date('h:i A, D F j, Y', get_post_time()).'</time>
+						  	</div>
+						</div>';
+			}
+		}
+	}
+
+	wp_reset_postdata();
+	return $str;
+}
+
+
