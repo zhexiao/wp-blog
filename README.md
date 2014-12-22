@@ -1,3 +1,3 @@
 wp-blog
 =======
-wordpress blog
+wordpress personal blog
