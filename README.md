@@ -1,3 +1,3 @@
-wp-news
+wp-blog
 =======
-wordpress news
+wordpress personal blog
