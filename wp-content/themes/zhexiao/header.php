@@ -4,7 +4,8 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="google-site-verification" content="tfCBws9YRRnNh_m6OON2Me-y_tz1gWpQflINYuQCfGU" />
-	<meta name="description" content="<?=bloginfo('description'); ?>" />
+	<meta name="msvalidate.01" content="D3C5A606A3F775DE03395334681397D9" />
+	
 	<title><?=wp_title( '', false, 'right' );?></title>
 	<?php wp_head(); ?>
 </head>
