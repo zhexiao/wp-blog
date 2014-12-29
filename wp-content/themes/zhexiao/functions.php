@@ -16,6 +16,10 @@ add_theme_support( 'html5', array( 'search-form' ) );
 // declare their support for post thumbnails 
 add_theme_support( 'post-thumbnails' ); 
 
+// replace core jquery to user jquery
+wp_deregister_script('jquery');
+wp_register_script('jquery', (get_template_directory_uri() . '/js/jquery-1.11.1.min.js'));
+wp_enqueue_script('jquery');
 
 /**
  * Add css and js to the Wordpress theme
@@ -27,13 +31,11 @@ function theme_add_assets() {
 	wp_enqueue_style( 'style-css', get_template_directory_uri() . '/style.css' );
 
 	// load javascript
-	wp_enqueue_script( 'jquery-1.11', get_template_directory_uri() . '/js/jquery-1.11.1.min.js');
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', array(), '', true );
 	wp_enqueue_script( 'jquery.easing', get_template_directory_uri() . '/js/jquery.easing.1.3.js', array(), '', true );
 	wp_enqueue_script( 'main', get_template_directory_uri() . '/js/main.js', array(), '', true);
 }
 add_action( 'wp_enqueue_scripts', 'theme_add_assets' );
-
 
 
 /**
