@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 
-<div class="main-top-3">
+<div class="main-top-3 clearfix s-p-wrap">
 	<div class="col-md-8 single-post">
 		<?php while ( have_posts() ) : the_post(); ?>
 			<?php get_template_part( 'content', get_post_format() ); ?>
@@ -24,13 +24,13 @@ get_header(); ?>
 				<h3>Related Posts</h3>
 				<?=get_related_posts(array(
 					'posts_per_page' => 5
-				))?>	
+				))?>
 			</div>
 
 			<?php comments_template(); ?>
 		<?php endwhile; ?>
 	</div>
-	
+
 	<div class="col-md-4 col-right-sidebar">
 		<?php get_sidebar(); ?>
 	</div>

@@ -64,7 +64,7 @@ body {
 		.soliloquy-image{
 			@include css3(transition, all 0.6s ease-in-out);
 		}
-	
+
 		.soliloquy-image:hover{
 			@include css3(transform, scale(1.1));
 		}
@@ -76,8 +76,8 @@ body {
 	padding-right: 15px;
 
 	.container-fluid{
-		 padding-right: 0px; 
-		 padding-left: 0px; 
+		 padding-right: 0px;
+		 padding-left: 0px;
 	}
 
 	.header-navbar{
@@ -85,8 +85,8 @@ body {
 		min-height: 44px;
 
 		#header-navigator{
-			padding-right: 0px; 
-			padding-left: 0px; 
+			padding-right: 0px;
+			padding-left: 0px;
 			background-color: #fff;
 
 			ul{
@@ -105,7 +105,7 @@ body {
 					font-size: 15px;
 				}
 
-				a:hover{		
+				a:hover{
 					background-color: #b93434;
 					text-decoration: none;
 					color: #fff;
@@ -220,27 +220,27 @@ article{
 			    width: 25px;
 			    line-height: 25px;
 			    text-align: center;
-			    margin-left: 5px; 
+			    margin-left: 5px;
 			}
 
 			.fa-facebook {
-			    background: #204385; 
+			    background: #204385;
 			}
 			.fa-twitter {
-			    background: #2aa9e0; 
+			    background: #2aa9e0;
 			}
 			.fa-google-plus {
-			    background: #d3492c; 
+			    background: #d3492c;
 			}
 			.fa-linkedin {
-			    background: #02669a; 
+			    background: #02669a;
 			}
 		}
 
 		.tag-wrap{
 			font-size: 14px;
 			padding: 10px;
-		
+
 			a{
 				display: inline-block;
 				padding: 2px 8px;
@@ -370,7 +370,7 @@ article:hover{
 		time{
 			color: #666;
 			font-size: 13px;
-		}	
+		}
 
 		.r-p-title{
 			a{
@@ -410,7 +410,7 @@ article:hover{
 		}
 
 		a:hover{
-			color: #b93434;	
+			color: #b93434;
 		}
 
 
@@ -573,20 +573,20 @@ article:hover{
 				margin-right: 10px;
 			}
 
-			.comment-reply-link, .edit-link a{	
+			.comment-reply-link, .edit-link a{
 				background: #b93434;
 				color: #fff;
 				font-size: 11px;
 				text-transform: uppercase;
 				line-height: 21px;
 				padding: 5px 10px;
-				@include css3(transition, all 0.6s ease-in-out);			
+				@include css3(transition, all 0.6s ease-in-out);
 			}
 
-			.comment-reply-link:hover, .edit-link a:hover{ 
+			.comment-reply-link:hover, .edit-link a:hover{
 				text-decoration: none;
 				background: #161616;
-				color: #fff;			
+				color: #fff;
 			}
 		}
 
@@ -905,5 +905,29 @@ blockquote{
 .related-posts:hover{
 	a{
 		color: #b93434;
+	}
+}
+
+.s-p-wrap{
+	article{
+		margin-bottom: 0;
+		border-bottom: 0;
+	}
+
+	.related-posts{
+		margin-top: 0;
+		border-top: 0;
+	}
+
+	.post-comments-area{
+		margin-top: 0;
+		border-top: 0;
+	}
+
+	.related-posts{
+		.media{
+			border-bottom: 1px dashed #dfdfdf;
+			padding-bottom: 10px;
+		}
 	}
 }
